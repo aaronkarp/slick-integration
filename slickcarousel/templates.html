@@ -1,0 +1,35 @@
+<template data-sly-template.render="${@ item,class,bgcolor,isImage,isTextPosition,isTextOnly}">
+    <div class="slick-item">
+        <sly data-sly-test.isUrlPresent="${item.url}" data-sly-call="${withHrefUrl @ item=item,class=class,bgcolor=bgcolor,isImage=isImage,isTextPosition=isTextPosition,isTextOnly=isTextOnly}"/>
+        <sly data-sly-test="${!isUrlPresent}" data-sly-call="${withOutHrefUrl @ item=item,class=class,bgcolor=bgcolor,isImage=isImage,isTextPosition=isTextPosition,isTextOnly=isTextOnly}"/>
+    </div>
+</template>
+
+<template data-sly-template.withHrefUrl="${@ item,class,bgcolor,isImage,isTextPosition,isTextOnly}">
+    <sly data-sly-test.isNewWindow="${item.urlTarget == 'newWindow'}">
+        <a class="slick-item-link" href="javascript:;" onclick="window.open('${item.url @context='uri'}','','width=1000, height=500,resizable=yes,scrollbars=yes');">
+            <sly data-sly-call="${withOutHrefUrl @ item=item,class=class,bgcolor=bgcolor,isImage=isImage,isTextPosition=isTextPosition,isTextOnly=isTextOnly}"/>
+        </a>
+    </sly>
+    <sly data-sly-test="${!isNewWindow}">
+        <a class="slick-item-link" href="${item.url @context='uri'}" target="${item.urlTarget}">
+            <sly data-sly-call="${withOutHrefUrl @ item=item,class=class,bgcolor=bgcolor,isImage=isImage,isTextPosition=isTextPosition,isTextOnly=isTextOnly}"/>
+          </a>
+    </sly>
+</template>
+
+<template data-sly-template.withOutHrefUrl="${@ item,class,bgcolor,isImage,isTextPosition,isTextOnly}" data-sly-use.assetTemplate="/apps/carters/components/htltemplate/assettemplate.html">
+    <div class="slick-item__body slick-item__body--${properties.dropShadow ? 'dropShadow': class}">
+        <sly data-sly-test="${isTextPosition && properties.textPosition == 'top' }" data-sly-call="${text @item=item,class=class,bgcolor=bgcolor }"/>
+        <sly data-sly-test="${isImage}" data-sly-call="${assetTemplate.image @ imgPath=item.imagePath, defaultAlt=item.imageAlt, class='slick-item__img', s7PresetType=item['s7PresetType'], s7ImagePreset=item['s7ImagePreset'], imageModifiers=item['imageModifiers']}"/>
+        <sly data-sly-test="${isTextOnly }" data-sly-call="${text @item=item,class=class,bgcolor=bgcolor }"/>
+        <sly data-sly-test="${isTextPosition && properties.textPosition == 'bottom' }" data-sly-call="${text @item=item,class=class,bgcolor=bgcolor }"/>
+    </div>
+</template>
+
+<template data-sly-template.text="${@ item,class,bgcolor}">
+        <div class="slick-item__textContainer" data-sly-test="${item.text}" style="background-color:${bgcolor @ context='styleToken'};">
+            <div class="slick-item__text">${item.text @context='unsafe'}</div>
+        </div>
+</template>
+

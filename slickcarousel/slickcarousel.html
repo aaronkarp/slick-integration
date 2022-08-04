@@ -1,0 +1,28 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.slickTemplates="/apps/carters/components/slickcarousel/templates.html"
+     data-sly-use.slickCarousel="com.carters.core.models.slickcarousel.SlickCarouselModel">
+    <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='carters.slickcarousel'}"/>
+
+
+    <sly data-sly-test="${properties.carouselType }">
+        <div class="crt-sfra">
+            <div class="container-contentonly">
+                <div class="slick-carousel-container" id="slick-${resource.path.hashCode}">
+                    <sly data-sly-test="${properties.carouselType == 'image' && slickCarousel.imageItemList}" data-sly-list="${slickCarousel.imageItemList}">
+                        <sly data-sly-call="${slickTemplates.render @ item = item,class='imgOnly',isImage=true}"/>
+                    </sly>
+                    <sly data-sly-test="${properties.carouselType == 'text' && slickCarousel.textItemList}" data-sly-list="${slickCarousel.textItemList}">
+                        <sly data-sly-call="${slickTemplates.render @ item = item,class='textOnly',bgcolor=properties.rteBackgroundColor,isTextOnly=true}"/>
+                    </sly>
+                    <sly data-sly-test="${properties.carouselType == 'imageandtext' && slickCarousel.imageAndTextItemList}" data-sly-list="${slickCarousel.imageAndTextItemList}">
+                        <sly data-sly-call="${slickTemplates.render @ item = item,class='textBottom',bgcolor=properties.backgroundColor,isImage=true,isTextPosition=true}"/>
+                    </sly>
+                </div>
+            </div>
+        </div>
+    </sly>
+
+    <sly data-sly-call="${clientlib.js @ categories='carters.slickcarousel'}"/>
+    <sly data-sly-call="${templates.placeholder @isEmpty = !slickCarousel.imageItemList && !slickCarousel.textItemList && !slickCarousel.imageAndTextItemList}"></sly>
+</sly>

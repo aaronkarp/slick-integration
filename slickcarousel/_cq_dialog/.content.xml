@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Slick Carousel"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <basic
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Basic"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <dropShadow
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    fieldDescription="apply Drop Shadow effect ?"
+                                                    name="./dropShadow"
+                                                    text="apply Drop Shadow effect ?"
+                                                    uncheckedValue="false"
+                                                    value="true"/>
+                                            <carousel-type
+                                                    granite:class="cq-dialog-dropdown-showhide"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="carousel Type"
+                                                    name="./carouselType">
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <image
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Image"
+                                                            value="image"/>
+                                                    <text
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Text"
+                                                            value="text"/>
+                                                    <imageandtext
+                                                            jcr:primaryType="nt:unstructured"
+                                                            text="Image And Text"
+                                                            value="imageandtext"/>
+                                                </items>
+                                            </carousel-type>
+                                            <setimageCarousel
+                                                    granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldDescription="Click 'Add' to add a new item">
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        showhidetargetvalue="image"/>
+                                                <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                        name="./imageItemList">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <heading
+                                                                granite:class="coral-Heading coral-Heading--4"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                level="{Long}4"
+                                                                text="Image Item"/>
+                                                        <well
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <imagePath
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        fieldLabel="Image Path"
+                                                                        name="./imagePath"
+                                                                        rootPath="/content/dam"/>
+                                                                <dm-image-settings
+                                                                        granite:class="dm-image-settings"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <preset-type
+                                                                                granite:class="preset-type-radio-group"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/radiogroup"
+                                                                                fieldLabel="Preset Type"
+                                                                                name="./s7PresetType"
+                                                                                text="Preset Type">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <option1
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        checked="{Boolean}true"
+                                                                                        name="./s7PresetType"
+                                                                                        text="Image Preset"
+                                                                                        value="image"/>
+                                                                                <option2
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        name="./s7PresetType"
+                                                                                        text="Smart Crop"
+                                                                                        value="smartCrop"/>
+                                                                            </items>
+                                                                        </preset-type>
+                                                                        <image-preset
+                                                                                granite:class="image-preset"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                fieldDescription="Image Preset to use when rendering image. It cannot be set when viewer preset is set."
+                                                                                fieldLabel="Image Preset"
+                                                                                name="./s7ImagePreset">
+                                                                            <datasource
+                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                    sling:resourceType="dam/components/scene7/common/imagepresetdatasource"/>
+                                                                        </image-preset>
+                                                                        <image-modifiers
+                                                                                granite:class="image-modifiers"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldDescription="Additional S7 image commands separated by '&amp;'.Field gives complete flexibility to change image effects."
+                                                                                fieldLabel="Image Modifiers"
+                                                                                name="./imageModifiers"/>
+                                                                    </items>
+                                                                </dm-image-settings>
+                                                                <imageAlt
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Image Alt"
+                                                                        name="./imageAlt"/>
+                                                                <url
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        fieldLabel="Url"
+                                                                        name="./url"
+                                                                        rootPath="/content"/>
+                                                                <urlTarget
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                        fieldLabel="Url Target"
+                                                                        name="./urlTarget">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <sameTab
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="Same Tab"
+                                                                                value="_self"/>
+                                                                        <newTab
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="New Tab"
+                                                                                value="_blank"/>
+                                                                        <newWindow
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                text="New Window"
+                                                                                value="newWindow"/>
+                                                                    </items>
+                                                                </urlTarget>
+                                                            </items>
+                                                        </well>
+                                                    </items>
+                                                </field>
+                                            </setimageCarousel>
+                                            <settextcarousel
+                                                    granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        showhidetargetvalue="text"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <backgroundColor jcr:primaryType="nt:unstructured"
+                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                                     showDefaultColors="{Boolean}false"
+                                                                     text="Background Color"
+                                                                     fieldLabel="Background Color"
+                                                                     name="./rteBackgroundColor"
+                                                                     showProperties="{Boolean}false">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <white jcr:primaryType="nt:unstructured" value="#FFFFFF"/>
+                                                            <black jcr:primaryType="nt:unstructured" value="#000000"/>
+                                                            <hugo-blue jcr:primaryType="nt:unstructured" value="#D8F1FF"/>
+                                                            <hugo-brown jcr:primaryType="nt:unstructured" value="#451A0C"/>
+                                                            <hugo-cream jcr:primaryType="nt:unstructured" value="#F6F6EC"/>
+                                                            <hugo-green jcr:primaryType="nt:unstructured" value="#AECDC7"/>
+                                                            <hugo-gray jcr:primaryType="nt:unstructured" value="#3C3C3C"/>
+                                                            <red jcr:primaryType="nt:unstructured" value="#FF0000"/>
+                                                            <green jcr:primaryType="nt:unstructured" value="#00FF00"/>
+                                                            <blue jcr:primaryType="nt:unstructured" value="#0000FF"/>
+                                                            <black jcr:primaryType="nt:unstructured" value="#000000"/>
+                                                            <brown jcr:primaryType="nt:unstructured" value="#996633"/>
+                                                            <orange jcr:primaryType="nt:unstructured" value="#FF7F00"/>
+                                                            <purple jcr:primaryType="nt:unstructured" value="#7F007F"/>
+                                                            <yellow jcr:primaryType="nt:unstructured" value="#FFFF00"/>
+                                                        </items>
+                                                    </backgroundColor>
+                                                    <textcarousel
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                            composite="{Boolean}true"
+                                                            fieldDescription="Click 'Add' to add a new item">
+                                                        <field
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                name="./textItemList">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <heading
+                                                                        granite:class="coral-Heading coral-Heading--4"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                        level="{Long}4"
+                                                                        text="carousel text item"/>
+                                                                <well
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                granite:class="cq-RichText-FixedColumn-column"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <url
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                        fieldLabel="Url"
+                                                                                        name="./url"
+                                                                                        rootPath="/content"/>
+                                                                                <urlTarget
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                        fieldLabel="Url Target"
+                                                                                        name="./urlTarget">
+                                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                                        <sameTab
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                text="Same Tab"
+                                                                                                value="_self"/>
+                                                                                        <newTab
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                text="New Tab"
+                                                                                                value="_blank"/>
+                                                                                        <newWindow
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                text="New Window"
+                                                                                                value="newWindow"/>
+                                                                                    </items>
+                                                                                </urlTarget>
+                                                                                <text
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                                                        fieldLabel="Text"
+                                                                                        name="./text"
+                                                                                        useFixedInlineToolbar="{Boolean}true">
+                                                                                    <rtePlugins
+                                                                                            jcr:primaryType="nt:unstructured">
+                                                                                        <subsuperscript
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <format
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <justify
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <spellcheck
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <misctools
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="[specialchars]">
+                                                                                            <specialCharsConfig
+                                                                                                    jcr:primaryType="nt:unstructured">
+                                                                                                <chars jcr:primaryType="nt:unstructured">
+                                                                                                    <copyright
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#169;"/>
+                                                                                                    <trademark
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#8482;"/>
+                                                                                                    <registered
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#174;"/>
+                                                                                                    <emDash
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#8212;"/>
+                                                                                                    <pound
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#163;"/>
+                                                                                                    <nbsp
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#160;"/>
+                                                                                                </chars>
+                                                                                            </specialCharsConfig>
+                                                                                        </misctools>
+                                                                                        <cartersfonts
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <links jcr:primaryType="nt:unstructured"
+                                                                                               features="-"/>
+                                                                                    </rtePlugins>
+                                                                                    <uiSettings
+                                                                                            jcr:primaryType="nt:unstructured">
+                                                                                        <cui jcr:primaryType="nt:unstructured">
+                                                                                            <inline
+                                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                                    toolbar="[format#bold,format#italic,format#underline,#paraformat,image#imageProps,#justify,#lists,links#modifylink,links#unlink,findreplace#find,findreplace#replace,subsuperscript#subscript,subsuperscript#superscript,spellcheck#checktext,misctools#specialchars]">
+                                                                                                <popovers
+                                                                                                        jcr:primaryType="nt:unstructured">
+                                                                                                    <justify
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            items="[justify#justifyleft]"
+                                                                                                            ref="justify"/>
+                                                                                                    <lists
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+                                                                                                            ref="lists"/>
+                                                                                                    <paraformat
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            items="paraformat:getFormats:paraformat-pulldown"
+                                                                                                            ref="paraformat"/>
+                                                                                                </popovers>
+                                                                                            </inline>
+                                                                                        </cui>
+                                                                                    </uiSettings>
+                                                                                </text>
+                                                                            </items>
+                                                                        </column>
+                                                                    </items>
+                                                                </well>
+                                                            </items>
+                                                        </field>
+                                                    </textcarousel>
+                                                </items>
+                                            </settextcarousel>
+                                            <setimageandtextcarousel
+                                                    granite:class="hide list-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data
+                                                        jcr:primaryType="nt:unstructured"
+                                                        showhidetargetvalue="imageandtext"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <textPosition
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                            fieldLabel="text Position"
+                                                            name="./textPosition">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <top
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="top"
+                                                                    value="top"/>
+                                                            <bottom
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="bottom"
+                                                                    value="bottom"/>
+                                                        </items>
+                                                    </textPosition>
+                                                    <backgroundColor jcr:primaryType="nt:unstructured"
+                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                                                                     showDefaultColors="{Boolean}false"
+                                                                     text="Background Color"
+                                                                     fieldLabel="Background Color"
+                                                                     name="./backgroundColor"
+                                                                     showProperties="{Boolean}false">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <white jcr:primaryType="nt:unstructured" value="#FFFFFF"/>
+                                                            <black jcr:primaryType="nt:unstructured" value="#000000"/>
+                                                            <hugo-blue jcr:primaryType="nt:unstructured" value="#D8F1FF"/>
+                                                            <hugo-brown jcr:primaryType="nt:unstructured" value="#451A0C"/>
+                                                            <hugo-cream jcr:primaryType="nt:unstructured" value="#F6F6EC"/>
+                                                            <hugo-green jcr:primaryType="nt:unstructured" value="#AECDC7"/>
+                                                            <hugo-gray jcr:primaryType="nt:unstructured" value="#3C3C3C"/>
+                                                            <red jcr:primaryType="nt:unstructured" value="#FF0000"/>
+                                                            <green jcr:primaryType="nt:unstructured" value="#00FF00"/>
+                                                            <blue jcr:primaryType="nt:unstructured" value="#0000FF"/>
+                                                            <black jcr:primaryType="nt:unstructured" value="#000000"/>
+                                                            <brown jcr:primaryType="nt:unstructured" value="#996633"/>
+                                                            <orange jcr:primaryType="nt:unstructured" value="#FF7F00"/>
+                                                            <purple jcr:primaryType="nt:unstructured" value="#7F007F"/>
+                                                            <yellow jcr:primaryType="nt:unstructured" value="#FFFF00"/>
+                                                        </items>
+                                                    </backgroundColor>
+                                                    <imageandtextcarousel
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                            composite="{Boolean}true"
+                                                            fieldDescription="Click 'Add' to add a new item">
+                                                        <field
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                name="./imageAndTextItemList">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <heading
+                                                                        granite:class="coral-Heading coral-Heading--4"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                        level="{Long}4"
+                                                                        text="carousel image and text item"/>
+                                                                <well
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/well">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <imagePath
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                fieldLabel="Image Path"
+                                                                                name="./imagePath"
+                                                                                rootPath="/content/dam"/>
+                                                                        <dm-image-settings
+                                                                                granite:class="dm-image-settings"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <preset-type
+                                                                                        granite:class="preset-type-radio-group"
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/radiogroup"
+                                                                                        fieldLabel="Preset Type"
+                                                                                        name="./s7PresetType"
+                                                                                        text="Preset Type">
+                                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                                        <option1
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                checked="{Boolean}true"
+                                                                                                name="./s7PresetType"
+                                                                                                text="Image Preset"
+                                                                                                value="image"/>
+                                                                                        <option2
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                name="./s7PresetType"
+                                                                                                text="Smart Crop"
+                                                                                                value="smartCrop"/>
+                                                                                    </items>
+                                                                                </preset-type>
+                                                                                <image-preset
+                                                                                        granite:class="image-preset"
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                        fieldDescription="Image Preset to use when rendering image. It cannot be set when viewer preset is set."
+                                                                                        fieldLabel="Image Preset"
+                                                                                        name="./s7ImagePreset">
+                                                                                    <datasource
+                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                            sling:resourceType="dam/components/scene7/common/imagepresetdatasource"/>
+                                                                                </image-preset>
+                                                                                <image-modifiers
+                                                                                        granite:class="image-modifiers"
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                        fieldDescription="Additional S7 image commands separated by '&amp;'.Field gives complete flexibility to change image effects."
+                                                                                        fieldLabel="Image Modifiers"
+                                                                                        name="./imageModifiers"/>
+                                                                            </items>
+                                                                        </dm-image-settings>
+                                                                        <imageAlt
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Image Alt"
+                                                                                name="./imageAlt"/>
+                                                                        <url
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                fieldLabel="Url"
+                                                                                name="./url"
+                                                                                rootPath="/content"/>
+                                                                        <urlTarget
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                fieldLabel="Url Target"
+                                                                                name="./urlTarget">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <sameTab
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        text="Same Tab"
+                                                                                        value="_self"/>
+                                                                                <newTab
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        text="New Tab"
+                                                                                        value="_blank"/>
+                                                                                <newWindow
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        text="New Window"
+                                                                                        value="newWindow"/>
+                                                                            </items>
+                                                                        </urlTarget>
+                                                                        <column
+                                                                                granite:class="cq-RichText-FixedColumn-column"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <text
+                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                        sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                                                        fieldLabel="Text"
+                                                                                        name="./text"
+                                                                                        useFixedInlineToolbar="{Boolean}true">
+                                                                                    <rtePlugins
+                                                                                            jcr:primaryType="nt:unstructured">
+                                                                                        <subsuperscript
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <format
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <justify
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <spellcheck
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <misctools
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="[specialchars]">
+                                                                                            <specialCharsConfig
+                                                                                                    jcr:primaryType="nt:unstructured">
+                                                                                                <chars jcr:primaryType="nt:unstructured">
+                                                                                                    <copyright
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#169;"/>
+                                                                                                    <trademark
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#8482;"/>
+                                                                                                    <registered
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#174;"/>
+                                                                                                    <emDash
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#8212;"/>
+                                                                                                    <pound
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#163;"/>
+                                                                                                    <nbsp
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            entity="&amp;#160;"/>
+                                                                                                </chars>
+                                                                                            </specialCharsConfig>
+                                                                                        </misctools>
+                                                                                        <cartersfonts
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                features="*"/>
+                                                                                        <links jcr:primaryType="nt:unstructured"
+                                                                                                features="-"/>
+                                                                                    </rtePlugins>
+                                                                                    <uiSettings
+                                                                                            jcr:primaryType="nt:unstructured">
+                                                                                        <cui jcr:primaryType="nt:unstructured">
+                                                                                            <inline
+                                                                                                    jcr:primaryType="nt:unstructured"
+                                                                                                    toolbar="[format#bold,format#italic,format#underline,#paraformat,image#imageProps,#justify,#lists,links#modifylink,links#unlink,findreplace#find,findreplace#replace,subsuperscript#subscript,subsuperscript#superscript,spellcheck#checktext,misctools#specialchars]">
+                                                                                                <popovers
+                                                                                                        jcr:primaryType="nt:unstructured">
+                                                                                                    <justify
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            items="[justify#justifyleft]"
+                                                                                                            ref="justify"/>
+                                                                                                    <lists
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            items="[lists#unordered,lists#ordered,lists#outdent,lists#indent]"
+                                                                                                            ref="lists"/>
+                                                                                                    <paraformat
+                                                                                                            jcr:primaryType="nt:unstructured"
+                                                                                                            items="paraformat:getFormats:paraformat-pulldown"
+                                                                                                            ref="paraformat"/>
+                                                                                                </popovers>
+                                                                                            </inline>
+                                                                                        </cui>
+                                                                                    </uiSettings>
+                                                                                </text>
+                                                                            </items>
+                                                                        </column>
+                                                                    </items>
+                                                                </well>
+                                                            </items>
+                                                        </field>
+                                                    </imageandtextcarousel>
+                                                </items>
+                                            </setimageandtextcarousel>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </basic>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
